@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<body onload="startTime()">
+
+    <style>
+        p
+        {
+    text-align: center;
+    background: #ff523b;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    width: 100px;
+    margin-left: 590px;
+        }
+        
+</style>
+<div id="paragraphs">
+<p id="CurrentDate"></p>
+<p id="CalDr"></p>
+<p id="Clock"></p>
+<p id="christmas"></p>
+<p id="newYear"></p>
+</div>
+
+<script>
+
+    <!--Date-->
+ dateCurrent = new Date().toLocaleDateString()
+document.getElementById("CurrentDate").innerHTML = "The date today is"+ " " + dateCurrent;
+
+<!--Calendar-->
+
+const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const d = new Date();
+let day = days[d.getDay()];
+document.getElementById("CalDr").innerHTML ="Today is"+ " " + day;
+
+<!--Clock-->
+<!--Updates every 0.001 Milliseconds kaseh gusto ko-->
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  let g = today.getMilliseconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('Clock').innerHTML ="The time is"+ " " + h + ":" + m + ":" + s + ":" + g;
+  setTimeout(startTime, 0.001);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};
+  return i;
+}
+
+<!--Holidays-->
+
+Christmas = "12/24/2022";
+NewYear = "1/1/2023";
+
+document.getElementById("christmas").innerHTML = "Christmas is on"+ " " + Christmas;
+document.getElementById("newYear").innerHTML = "New year is on"+ " " + NewYear;
+
+</script>
+
+</body>
+</html>
